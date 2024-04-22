@@ -35,14 +35,14 @@ public class AddUserAdmin extends HttpServlet {
         String password = request.getParameter("password");
         String address = request.getParameter("address");
         String phone = request.getParameter("phone");
-        String sex = request.getParameter("gender");
+        int sex;
         int day;
         int month;
         int year;
         int role;
         int verify;
 
-        if (fullname == null || address == null || phone == null || sex == null || email == null || password == null){
+        if (fullname == null || address == null || phone == null || email == null || password == null){
             request.setAttribute("type", "error");
             request.setAttribute("information", "Lỗi");
             request.getRequestDispatcher("showUserAdmin").forward(request, response);
@@ -57,7 +57,7 @@ public class AddUserAdmin extends HttpServlet {
                     day = Integer.parseInt(request.getParameter("day"));
                     month= Integer.parseInt(request.getParameter("month"));
                     year = Integer.parseInt(request.getParameter("year"));
-
+                    sex = Integer.parseInt(request.getParameter("gender"));
                     information = UserService.getInstance().checkDOB(day, month, year);
 
                     if (information.equals("")){

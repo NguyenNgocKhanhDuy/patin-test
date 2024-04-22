@@ -34,14 +34,14 @@ public class UpdateUserAdmin extends HttpServlet {
         String fullname = request.getParameter("fullname");
         String address = request.getParameter("address");
         String phone = request.getParameter("phone");
-        String sex = request.getParameter("gender");
+        int sex;
         int day;
         int month;
         int year;
         int role;
         int verify;
 
-        if (fullname == null || address == null || phone == null || sex == null){
+        if (fullname == null || address == null || phone == null){
             request.setAttribute("type", "error");
             request.setAttribute("information", "Lỗi");
             request.getRequestDispatcher("admin.jsp").forward(request, response);
@@ -56,6 +56,7 @@ public class UpdateUserAdmin extends HttpServlet {
                     day = Integer.parseInt(request.getParameter("day"));
                     month= Integer.parseInt(request.getParameter("month"));
                     year = Integer.parseInt(request.getParameter("year"));
+                    sex = Integer.parseInt(request.getParameter("gender"));
 
                     User user = UserService.getInstance().getUserByID(id);
                     user.setFullName(fullname);

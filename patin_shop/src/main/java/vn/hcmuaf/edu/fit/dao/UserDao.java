@@ -55,7 +55,7 @@ public class UserDao {
         return users;
     }
 
-    public boolean addUser(String email, String password, int verify, String fullName, String address, String phone, String sex, LocalDateTime dob, String avatar, int role) {
+    public boolean addUser(String email, String password, int verify, String fullName, String address, String phone, int sex, LocalDateTime dob, String avatar, int role) {
         String hashPass = hashPassword(password);
         Integer i = JDBIConnector.get().withHandle(handle -> {
             return handle.createUpdate("INSERT INTO user(email, password, verify, fullname, address, phone, sex, dob, avatar, role) " +

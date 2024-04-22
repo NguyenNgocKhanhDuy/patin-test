@@ -51,7 +51,7 @@ public class UserService {
     }
 
     public boolean register(String email, String password, String fullname, String address, String phone) {
-        if (UserDao.getInstance().addUser(email, password, 0, fullname, address, phone,"Nam", LocalDateTime.now(), "http://localhost:8080/patin_shop/assets/images/logo.PNG", 0)){
+        if (UserDao.getInstance().addUser(email, password, 0, fullname, address, phone,0, LocalDateTime.now(), "http://localhost:8080/patin_shop/assets/images/logo.PNG", 0)){
             while (true){
                 int code = Integer.parseInt(randomCodeVerify());
                 if (!UserDao.getInstance().isExitsCode(code)) {

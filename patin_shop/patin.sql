@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 100428 (10.4.28-MariaDB)
  Source Host           : localhost:3306
- Source Schema         : patin
+ Source Schema         : te
 
  Target Server Type    : MySQL
  Target Server Version : 100428 (10.4.28-MariaDB)
  File Encoding         : 65001
 
- Date: 26/02/2024 10:44:24
+ Date: 22/04/2024 19:20:34
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `bill`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `b_u`(`user_id` ASC) USING BTREE,
   CONSTRAINT `b_u` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of bill
@@ -57,7 +57,7 @@ CREATE TABLE `bill_detail`  (
   CONSTRAINT `b_c` FOREIGN KEY (`color_id`) REFERENCES `color` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `b_p` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `b_s` FOREIGN KEY (`size_id`) REFERENCES `size` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of bill_detail
@@ -71,7 +71,7 @@ CREATE TABLE `category`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of category
@@ -94,7 +94,7 @@ CREATE TABLE `category_detail`  (
   INDEX `c_p`(`id_product` ASC) USING BTREE,
   CONSTRAINT `c-c` FOREIGN KEY (`id_category`) REFERENCES `category` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `c_p` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of category_detail
@@ -259,7 +259,7 @@ CREATE TABLE `color`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of color
@@ -284,7 +284,7 @@ CREATE TABLE `image_product`  (
   PRIMARY KEY (`id`, `id_product`) USING BTREE,
   INDEX `i_p`(`id_product` ASC) USING BTREE,
   CONSTRAINT `i_p` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of image_product
@@ -428,7 +428,6 @@ INSERT INTO `image_product` VALUES (2, 'https://xpatin.com/wp-content/uploads/20
 INSERT INTO `image_product` VALUES (2, 'https://xpatin.com/wp-content/uploads/2019/09/giay-truot-patin-flying-eagle-f1s-mau-hong-xpatin2-380x380.jpg', 73);
 INSERT INTO `image_product` VALUES (2, 'https://xpatin.com/wp-content/uploads/2019/12/giay-patin-flying-eagle-f6-anh-2.jpg', 74);
 INSERT INTO `image_product` VALUES (2, 'https://xpatin.com/wp-content/uploads/2019/12/giay-patin-flying-eagle-f2-anh-2.jpg', 77);
-INSERT INTO `image_product` VALUES (2, 'https://xpatin.com/wp-content/uploads/2019/12/giay-patin-flying-eagle-f1-anh-3-380x380.jpg', 78);
 INSERT INTO `image_product` VALUES (3, 'https://xpatin.com/wp-content/uploads/2023/05/thiet-ke-hop-dung-giay-patin-micro-delta-x-2023-380x380.jpg', 1);
 INSERT INTO `image_product` VALUES (3, 'https://xpatin.com/wp-content/uploads/2022/01/c057c9f26e-min-380x380.jpg', 2);
 INSERT INTO `image_product` VALUES (3, 'https://xpatin.com/wp-content/uploads/2021/12/co-giay-composite-380x380.jpg', 3);
@@ -508,7 +507,7 @@ CREATE TABLE `image_rating`  (
   PRIMARY KEY (`id`, `rating_id`) USING BTREE,
   INDEX `r_r`(`rating_id` ASC) USING BTREE,
   CONSTRAINT `r_r` FOREIGN KEY (`rating_id`) REFERENCES `rating` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of image_rating
@@ -528,7 +527,7 @@ CREATE TABLE `permissions`  (
   INDEX `p_u`(`user_id` ASC) USING BTREE,
   CONSTRAINT `p_r` FOREIGN KEY (`resource_id`) REFERENCES `resources` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `p_u` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 64 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 88 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of permissions
@@ -557,7 +556,7 @@ CREATE TABLE `product`  (
   `sale_percent` double NULL DEFAULT NULL,
   `information` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 104 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 107 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of product
@@ -657,7 +656,7 @@ CREATE TABLE `product_detail`  (
   CONSTRAINT `p_c` FOREIGN KEY (`id_color`) REFERENCES `color` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `p_p` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `p_s` FOREIGN KEY (`id_size`) REFERENCES `size` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of product_detail
@@ -665,7 +664,7 @@ CREATE TABLE `product_detail`  (
 INSERT INTO `product_detail` VALUES (1, 1, 3, 1, 800000);
 INSERT INTO `product_detail` VALUES (1, 3, 3, 10, 850000);
 INSERT INTO `product_detail` VALUES (1, 5, 4, 10, 850000);
-INSERT INTO `product_detail` VALUES (1, 14, 6, 20, 500000);
+INSERT INTO `product_detail` VALUES (1, 14, 6, 19, 500000);
 INSERT INTO `product_detail` VALUES (2, 1, 1, 30, 1200000);
 INSERT INTO `product_detail` VALUES (2, 5, 1, 20, 1270000);
 INSERT INTO `product_detail` VALUES (3, 2, 3, 10, 2300000);
@@ -738,7 +737,7 @@ INSERT INTO `product_detail` VALUES (24, 3, 3, 9, 2300000);
 INSERT INTO `product_detail` VALUES (25, 2, 4, 4, 2000000);
 INSERT INTO `product_detail` VALUES (25, 3, 2, 6, 2000000);
 INSERT INTO `product_detail` VALUES (25, 3, 3, 2, 2000000);
-INSERT INTO `product_detail` VALUES (26, 2, 2, 2, 2100000);
+INSERT INTO `product_detail` VALUES (26, 2, 2, 1, 2100000);
 INSERT INTO `product_detail` VALUES (26, 2, 4, 5, 2100000);
 INSERT INTO `product_detail` VALUES (26, 6, 3, 3, 2200000);
 INSERT INTO `product_detail` VALUES (27, 7, 3, 5, 1950000);
@@ -917,7 +916,7 @@ CREATE TABLE `rating`  (
   INDEX `rate_u`(`user_id` ASC) USING BTREE,
   CONSTRAINT `rate_p` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `rate_u` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 39 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of rating
@@ -935,7 +934,7 @@ CREATE TABLE `rating_detail_like`  (
   INDEX `rd_u`(`user_id` ASC) USING BTREE,
   CONSTRAINT `r_rd` FOREIGN KEY (`rating_id`) REFERENCES `rating` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `rd_u` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of rating_detail_like
@@ -950,7 +949,7 @@ CREATE TABLE `resources`  (
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `status` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of resources
@@ -970,7 +969,7 @@ CREATE TABLE `size`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of size
@@ -1005,18 +1004,18 @@ CREATE TABLE `user`  (
   `fullname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `sex` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `sex` int NULL DEFAULT NULL,
   `dob` date NULL DEFAULT NULL,
   `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `keyPass` int NULL DEFAULT NULL,
   `role` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2045 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (28, '21130035@st.hcmuaf.edu.vn', '2ac9a6746aca543af8dff39894cfe8173afba21eb01c6fae33d52947222855ef', 1, 'Nguyễn Ngọc Khánh Duy', '0839151003', '863/10', 'Nam', '2003-10-15', 'http://localhost:8080/patin_shop/assets/images/logo.PNG', NULL, 2);
+INSERT INTO `user` VALUES (28, '21130035@st.hcmuaf.edu.vn', '2ac9a6746aca543af8dff39894cfe8173afba21eb01c6fae33d52947222855ef', 1, 'Nguyễn Ngọc Khánh Duy', '0839151003', '863/10', 0, '2003-10-15', 'http://localhost:8080/patin_shop/assets/images/logo.PNG', NULL, 2);
 
 -- ----------------------------
 -- Table structure for wish_list
@@ -1029,7 +1028,7 @@ CREATE TABLE `wish_list`  (
   INDEX `w_p`(`id_product` ASC) USING BTREE,
   CONSTRAINT `w_p` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `w_u` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of wish_list
