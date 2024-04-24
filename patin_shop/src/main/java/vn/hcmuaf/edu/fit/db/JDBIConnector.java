@@ -2,6 +2,7 @@ package vn.hcmuaf.edu.fit.db;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.jdbi.v3.core.Jdbi;
+import vn.hcmuaf.edu.fit.dao.UserDao;
 import vn.hcmuaf.edu.fit.services.BillService;
 
 import java.sql.SQLException;
@@ -29,9 +30,6 @@ public class JDBIConnector {
         return connector.jdbi;
     }
 
-    public static void main(String[] args) {
-        System.out.println(BillService.getInstance().getAllBillByUserAndStatus(28, ""));
-    }
 
 }
 
