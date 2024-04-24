@@ -34,7 +34,7 @@ $('document').ready(function () {
             {
                 data: null,
                 className: 'text-center delete',
-                render: function (data) {
+                render: function () {
                     return '<i class="fa-solid fa-trash maction"></i>'
                 }
             }
@@ -47,18 +47,27 @@ $('document').ready(function () {
         var rowData = table.row(rowIndex).data();
         var idUser = rowData.id;
 
-        $.ajax({
-            url: 'deleteUserBT1',
-            type: 'POST',
-            data: { id: idUser },
-            success: function(response) {
-                table.row(rowIndex).remove().draw();
-                console.log(response)
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
-            }
-        });
+        $('.modal').css({"display": "flex"})
+        $('.modal .btn-info').on('click', function () {
+            $('.modal').css({"display": "none"})
+        })
+        $('.modal .btn-danger').on('click', function () {
+            $('.modal').css({"display": "none"})
+            $.ajax({
+                url: 'deleteUserBT1',
+                type: 'POST',
+                data: { id: idUser },
+                success: function(response) {
+                    table.row(rowIndex).remove().draw();
+                    $('.popup').addClass("success").removeClass("none")
+                    $('.popup').html(`<i class=\"fa-solid fa-check icon\"></i> <p>${response}</p>`)
+                },
+                error: function(xhr, status, error) {
+                    $('.popup').addClass("error").removeClass("none")
+                    $('.popup').html(`<i class="fa-solid fa-ban fa-flip-horizontal icon"></i> <p>${error}</p>`)
+                }
+            });
+        })
     })
 
 })

@@ -6,3 +6,27 @@
     cursor: pointer;
     margin: 0 16px;
 }
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 4px;
+}
+
+.modal-container .select {
+    display: flex;
+    justify-content: space-between;
+}

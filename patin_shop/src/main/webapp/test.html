@@ -12,16 +12,34 @@
       <h1>Thêm người dùng</h1>
       <div class="inside">
           <div class="wrapper">
-              <input class="part" type="email" placeholder="email">
-              <input class="part" type="password" placeholder="password">
-              <input class="part" type="text" placeholder="full name">
+              <div class="holder">
+                  <label>Email</label>
+                  <input class="part" type="email" placeholder="email">
+              </div>
+              <div class="holder">
+                  <label>Password</label>
+                  <input class="part" type="password" placeholder="password">
+              </div>
+              <div class="holder">
+                  <label>Full Name</label>
+                  <input class="part" type="text" placeholder="full name">
+              </div>
           </div>
           <div class="wrapper">
             <div class="holder holder-row">
-              <input class="part" type="phone" placeholder="phone">
-              <input class="part" type="text" placeholder="address">
+                <div class="holder">
+                    <label>Phone</label>
+                    <input class="part" type="phone" placeholder="phone">
+                </div>
+                <div class="holder">
+                    <label>Address</label>
+                    <input class="part" type="text" placeholder="address">
+                </div>
             </div>
-            <input class="part" type="date">
+              <div class="holder">
+                  <label>Day Of Birth</label>
+                  <input class="part" type="date">
+              </div>
             <div class="holder holder-row">
               <select class="part" name="gender" id="gender">
                 <option value="0">Nam</option>

@@ -35,6 +35,20 @@ public class AddUserBT1 extends HttpServlet {
             role = Integer.parseInt(request.getParameter("role"));
             verify = Integer.parseInt(request.getParameter("verify"));
 
+            if (date.length() == 0){
+                request.setAttribute("type", "error");
+                request.setAttribute("information", "Ngày sinh không được để trống");
+                request.setAttribute("email", email);
+                request.setAttribute("phone", phone);
+                request.setAttribute("fullName", fullName);
+                request.setAttribute("address", address);
+                request.setAttribute("date", date);
+                request.setAttribute("role", role);
+                request.setAttribute("verify", verify);
+                request.setAttribute("gender", gender);
+                request.getRequestDispatcher("bt1.jsp").forward(request, response);
+            }
+
             Date dob = Date.valueOf(date);
 
             User user = new User();
@@ -53,28 +67,36 @@ public class AddUserBT1 extends HttpServlet {
             if (error.equals("")){
                 if (!UserServiceBT1.getInstance().isExistsUser(user.getEmail())){
                     if (UserServiceBT1.getInstance().addUser(user)){
-                        request.setAttribute("typeReturn", "success");
-                        request.setAttribute("textReturn", "Thêm thành công");
+                        request.setAttribute("type", "success");
+                        request.setAttribute("information", "Thêm thành công");
                         request.getRequestDispatcher("bt1.jsp").forward(request, response);
                     }else {
-                        request.setAttribute("typeReturn", "error");
-                        request.setAttribute("textReturn", "Lỗi sql");
+                        request.setAttribute("type", "error");
+                        request.setAttribute("information", "Lỗi sql");
                         request.getRequestDispatcher("bt1.jsp").forward(request, response);
                     }
                 }else {
-                    request.setAttribute("typeReturn", "error");
-                    request.setAttribute("textReturn", "Đã tồn tại tài khoản");
+                    request.setAttribute("type", "error");
+                    request.setAttribute("information", "Đã tồn tại tài khoản");
                     request.getRequestDispatcher("bt1.jsp").forward(request, response);
                 }
             }else {
-                request.setAttribute("typeReturn", "error");
-                request.setAttribute("textReturn", error);
+                request.setAttribute("type", "error");
+                request.setAttribute("information", error);
+                request.setAttribute("email", email);
+                request.setAttribute("phone", phone);
+                request.setAttribute("fullName", fullName);
+                request.setAttribute("address", address);
+                request.setAttribute("date", date);
+                request.setAttribute("role", role);
+                request.setAttribute("verify", verify);
+                request.setAttribute("gender", gender);
                 request.getRequestDispatcher("bt1.jsp").forward(request, response);
             }
 
         }catch (NumberFormatException e){
-            request.setAttribute("typeReturn", "error");
-            request.setAttribute("textReturn", "Không hợp lệ");
+            request.setAttribute("type", "error");
+            request.setAttribute("information", "Không hợp lệ");
             request.getRequestDispatcher("bt1.jsp").forward(request, response);
         }
     }

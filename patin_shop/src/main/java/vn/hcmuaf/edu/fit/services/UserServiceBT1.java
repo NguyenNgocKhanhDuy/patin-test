@@ -28,11 +28,11 @@ public class UserServiceBT1 {
     }
 
     public String validate(User user){
-        if (!checkEmai(user.getEmail())){
+        if (!checkEmai(user.getEmail()) || user.getEmail().length() == 0){
             return "Nhập đúng định dạng email";
-        } else if (!checkPass(user.getPassword())) {
+        } else if (!checkPass(user.getPassword()) || user.getPassword().length() == 0) {
             return "Mật khẩu có ít nhất một ký tự viết hoa, một ký tự viết thường và một số";
-        } else if (!checkPhone(user.getPhone())) {
+        } else if (!checkPhone(user.getPhone()) || user.getPhone().length() == 0) {
             return "Số điện thoại có 10 số";
         } else if (user.getFullName().length() <= 0) {
             return "Họ tên không được để trống";
@@ -67,8 +67,5 @@ public class UserServiceBT1 {
         return now.getYear() - dob.getYear() > 18;
     }
 
-    public static void main(String[] args) {
-        java.sql.Date sql = java.sql.Date.valueOf("2005-10-15");
-        System.out.println(UserServiceBT1.getInstance().checkDOB(sql));
-    }
+
 }

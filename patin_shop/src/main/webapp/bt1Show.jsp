@@ -92,12 +92,23 @@
                         <th>DOB</th>
                         <th>Verify</th>
                         <th>Role</th>
-                        <th>More Action</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
            </table>
        </div>
    </div>
+
+    <div class="modal">
+        <div class="modal-container">
+            <h3>Bạn có chắc chắn muốn xoá</h3>
+            <div class="select">
+                <button class="btn btn-danger">Xoá</button>
+                <button class="btn btn-info">Huỷ</button>
+            </div>
+        </div>
+    </div>
 
     <div class="popup ${type != null ? type : "none"}">
         <c:if test="${type.equals(\"success\")}">

@@ -82,36 +82,55 @@
                <h1>Thêm người dùng</h1>
                <div class="inside">
                    <div class="wrapper">
-                       <input class="part" type="email" placeholder="email" name="email">
-                       <input class="part" type="password" placeholder="password" name="pass">
-                       <input class="part" type="text" placeholder="full name" name="name">
+                       <div class="holder">
+                           <label>Email</label>
+                           <input class="part" type="email" placeholder="email" name="email" value="${email != null ? email : ""}">
+                       </div>
+                       <div class="holder">
+                            <label>Password</label>
+                           <input class="part" type="password" placeholder="password" name="pass">
+                       </div>
+                       <div class="holder">
+                           <label>Full Name</label>
+                           <input class="part" type="text" placeholder="full name" name="name" value="${fullName != null ? fullName : ""}">
+
+                       </div>
                    </div>
                    <div class="wrapper">
-                       <div class="holder holder-row">
-                           <input class="part" type="phone" placeholder="phone" name="phone">
-                           <input class="part" type="text" placeholder="address" name="address">
+                       <div class="holder-row">
+                           <div class="holder">
+                               <label>Phone</label>
+                               <input class="part" type="phone" placeholder="phone" name="phone" value="${phone != null ? phone : ""}">
+                           </div>
+                           <div class="holder">
+                               <label>Address</label>
+                               <input class="part" type="text" placeholder="address" name="address" value="${address != null ? address : ""}">
+                           </div>
                        </div>
-                       <input class="part" type="date" name="date">
-                       <div class="holder holder-row">
+                       <div class="holder">
+                           <label>Day of Birth</label>
+                           <input class="part" type="date" name="date" value="${date != null ? date : ""}">
+                       </div>
+                       <div class="holder holder-row mt-20">
                            <select class="part" name="gender" id="gender">
-                               <option value="0">Nam</option>
-                               <option value="1">Nữ</option>
+                               <option ${gender != null && gender == 0 ? "selected" : ""} value="0">Nam</option>
+                               <option ${gender != null && gender == 1 ? "selected" : ""} value="1">Nữ</option>
                            </select>
                            <select class="part" name="role" id="role">
-                               <option value="0">Khách hàng</option>
-                               <option value="1">Mod</option>
-                               <option value="2">Admin</option>
+                               <option ${role != null && role == 0 ? "selected" : ""} value="0">Khách hàng</option>
+                               <option ${role != null && role == 1 ? "selected" : ""} value="1">Mod</option>
+                               <option ${role != null && role == 2 ? "selected" : ""} value="2">Admin</option>
                            </select>
                            <select class="part" name="verify" id="verify">
-                               <option value="0">Chưa xác thực</option>
-                               <option value="1">Đã xác thực</option>
+                               <option ${verify != null && verify == 0 ? "selected" : ""} value="0">Chưa xác thực</option>
+                               <option ${verify != null && verify == 0 ? "selected" : ""} value="1">Đã xác thực</option>
                            </select>
                        </div>
                    </div>
 
                </div>
-               <div class="return ${typeReturn != null ? typeReturn : ""}">
-                   ${textReturn != null ? textReturn : ""}
+               <div class="return ${type != null ? type : ""}">
+                   ${information != null ? information : ""}
                </div>
                <input type="submit" class="btn" value="Thêm">
            </form>
