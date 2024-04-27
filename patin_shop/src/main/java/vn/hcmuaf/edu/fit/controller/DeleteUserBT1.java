@@ -22,12 +22,12 @@ public class DeleteUserBT1 extends HttpServlet {
         try {
             id = Integer.parseInt(request.getParameter("id"));
             if (UserDaoBT1.getInstance().delete(id)){
-                response.getWriter().write("Xoá thành công");
+                response.getWriter().println("Xoá thành công");
             }else {
-                response.getWriter().write("Không thể xoá");
+                response.getWriter().println("Không thể xoá");
             }
         }catch (NumberFormatException e){
-            response.getWriter().write("Không phải số");
+            response.getWriter().println("Không phải số");
         }
     }
 }
