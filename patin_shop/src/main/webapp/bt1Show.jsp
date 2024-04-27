@@ -83,6 +83,7 @@
            <table id="data" class="display table table-bordered table-striped" style="width: 100%">
                 <thead>
                     <tr>
+<%--                        <th>ID</th>--%>
                         <th>Email</th>
 <%--                        <th>Password</th>--%>
                         <th>Full Name</th>
@@ -160,6 +161,6 @@
     <script type="text/javascript" charset="UTF-8" src="${pageContext.request.contextPath}/assets/js/bt1Show.js"></script>
 <%--    <script src="${pageContext.request.contextPath}/assets/js/search.js"></script>--%>
 <%--    <script src="${pageContext.request.contextPath}/assets/js/category.js"></script>--%>
-    <script src="${pageContext.request.contextPath}/assets/js/popupNotice.js"></script>
+<%--    <script src="${pageContext.request.contextPath}/assets/js/popupNotice.js"></script>--%>
 </body>
 </html>

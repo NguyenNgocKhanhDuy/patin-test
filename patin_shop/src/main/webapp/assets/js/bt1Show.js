@@ -7,7 +7,16 @@ $('document').ready(function () {
             dataSrc: ''
         },
 
+
+        // "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+        //     var index = iDisplayIndex +1;
+        //     $('td:eq(0)',nRow).html(index);
+        //     return nRow;
+        // },
+
         columns: [
+            // {data: 'ID'},
+
             {data: 'email'},
             // {data: 'password'},
             {data: 'fullName'},
@@ -60,14 +69,28 @@ $('document').ready(function () {
                 success: function(response) {
                     table.row(rowIndex).remove().draw();
                     $('.popup').addClass("success").removeClass("none")
-                    $('.popup').html(`<i class=\"fa-solid fa-check icon\"></i> <p>${response}</p>`)
+                    $('.popup').html(`<i class=\"fa-solid fa-check icon\"></i> <p>${response}</p> <i class="fa-solid fa-xmark del"></i>`)
+                    time = setTimeout(hideError, 3000)
+                    $('.popup .del').on('click', function () {
+                        hideError()
+                        clearInterval(time)
+                    })
                 },
                 error: function(xhr, status, error) {
                     $('.popup').addClass("error").removeClass("none")
-                    $('.popup').html(`<i class="fa-solid fa-ban fa-flip-horizontal icon"></i> <p>${error}</p>`)
+                    $('.popup').html(`<i class="fa-solid fa-ban fa-flip-horizontal icon"></i> <p>${error}</p> <i class="fa-solid fa-xmark del"></i>`)
                 }
             });
         })
     })
 
+    function hideError() {
+        $('.popup').addClass("fadeOut")
+        setTimeout(hide, 500);
+    }
+
+    function hide() {
+        $('.popup').removeClass("error alert success fadeOut")
+        $('.popup').addClass("none")
+    }
 })

@@ -35,6 +35,9 @@ public class AddUserBT1 extends HttpServlet {
             role = Integer.parseInt(request.getParameter("role"));
             verify = Integer.parseInt(request.getParameter("verify"));
 
+            response.getWriter().println(role);
+
+
             if (date.length() == 0){
                 request.setAttribute("type", "error");
                 request.setAttribute("information", "Ngày sinh không được để trống");
