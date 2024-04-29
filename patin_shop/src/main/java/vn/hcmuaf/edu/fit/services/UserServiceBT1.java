@@ -45,7 +45,7 @@ public class UserServiceBT1 {
     }
 
     public boolean checkEmai(String email){
-        Pattern pattern = Pattern.compile("^[A-Za-z0-9]+[A-Za-z0-9\\.]+@[A-Za-z0-9]+([\\.A-Za-z0-9]+)$");
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
