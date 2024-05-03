@@ -19,7 +19,7 @@
                 className: "text-center",
                 // render: function () {
                 //     return `<select>
-                //                 <option value="1">Trạng thái 1</option>
+                //                 <option ${data.status == "..." ? "selected" : ""} value="1">Trạng thái 1</option>
                 //                 <option value="2">Trạng thái 2</option>
                 //                 <option value="3">Trạng thái 3</option>
                 //                 <option value="4">Trạng thái 4</option>

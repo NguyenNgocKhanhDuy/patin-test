@@ -105,12 +105,12 @@
                     </li>
                     <li>Status:
 <%--                        ${bill.getStatus()}--%>
-                        <select id="statusBill">
+                        <select id="statusBill" ${bill.getStatus().equals("Trạng thái hoàn thành") ? "disabled" : ""}>
                             <option ${bill.getStatus().equals("Trạng thái 1") ? "selected" : ""} value="Trạng thái 1">Trạng thái 1</option>
                             <option ${bill.getStatus().equals("Trạng thái 2") ? "selected" : ""} value="Trạng thái 2">Trạng thái 2</option>
                             <option ${bill.getStatus().equals("Trạng thái 3") ? "selected" : ""} value="Trạng thái 3">Trạng thái 3</option>
                             <option ${bill.getStatus().equals("Trạng thái huỷ") ? "selected" : ""} value="Trạng thái huỷ">Trạng thái huỷ</option>
-                            <option ${bill.getStatus().equals("Trạng thái hoàn thành") ? "selected disabled" : ""} value="Trạng thái hoàn thành">Trạng thái hoàn thành</option>
+                            <option ${bill.getStatus().equals("Trạng thái hoàn thành") ? "selected" : ""} value="Trạng thái hoàn thành">Trạng thái hoàn thành</option>
                         </select>
                     </li>
                     <li>Payment: ${bill.getPayment()}</li>
