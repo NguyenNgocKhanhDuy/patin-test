@@ -63,6 +63,14 @@ public class BillDaoBT3 {
         return strings.size() == 1 ? strings.get(0) : null;
     }
 
+    public int getTotalPrice(int id){
+        List<Integer> integers = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT SUM(price * quantity) FROM bill_detail WHERE bill_id = ?")
+                    .bind(0, id).mapTo(Integer.class).stream().collect(Collectors.toList());
+        });
+        return integers.size() == 1 ? integers.get(0) : 0;
+    }
+
     public static void main(String[] args) {
         System.out.println(BillDaoBT3.getInstance().getBillAllDetail(25));
     }

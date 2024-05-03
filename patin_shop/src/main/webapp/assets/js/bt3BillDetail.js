@@ -21,7 +21,15 @@
             {data: "color.name"},
             {data: "size.name"},
             {data: "quantity"},
-            {data: "price"}
+            {
+                data: "price",
+                render: function (data) {
+                    return parseFloat(data).toLocaleString('vi-VN', {
+                        style: 'currency',
+                        currency: 'VND'
+                    })
+                }
+            }
         ]
     })
 

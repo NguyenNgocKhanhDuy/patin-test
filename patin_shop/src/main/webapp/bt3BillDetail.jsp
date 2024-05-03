@@ -114,6 +114,9 @@
                         </select>
                     </li>
                     <li>Payment: ${bill.getPayment()}</li>
+                    <li>Total:
+                        <fmt:formatNumber type="currency" value="${total}"/>
+                    </li>
                     <li>Note: ${bill.getNote()}</li>
                     <li>User name: ${bill.getUser().getFullName()}</li>
                     <li>User Phone: ${bill.getUser().getPhone()}</li>

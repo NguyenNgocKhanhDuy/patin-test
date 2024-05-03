@@ -18,6 +18,7 @@ public class ShowBillDetailBT3 extends HttpServlet {
             id = Integer.parseInt(request.getParameter("id"));
             Bill bill = BillDaoBT3.getInstance().getBill(id);
             request.setAttribute("bill", bill);
+            request.setAttribute("total", BillDaoBT3.getInstance().getTotalPrice(id));
             request.getRequestDispatcher("bt3BillDetail.jsp").forward(request, response);
         }catch (NumberFormatException e){
 
