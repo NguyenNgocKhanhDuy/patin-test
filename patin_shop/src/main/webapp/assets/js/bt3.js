@@ -17,14 +17,14 @@
             {
                 data: "status",
                 className: "text-center",
-                render: function () {
-                    return `<select>
-                                <option value="1">Trạng thái 1</option> 
-                                <option value="2">Trạng thái 2</option> 
-                                <option value="3">Trạng thái 3</option> 
-                                <option value="4">Trạng thái 4</option> 
-                            </select>`
-                }
+                // render: function () {
+                //     return `<select>
+                //                 <option value="1">Trạng thái 1</option>
+                //                 <option value="2">Trạng thái 2</option>
+                //                 <option value="3">Trạng thái 3</option>
+                //                 <option value="4">Trạng thái 4</option>
+                //             </select>`
+                // }
 
             },
             {data: "payment"},
@@ -33,11 +33,4 @@
         ]
     })
 
-    // $('#data tbody').on('click', 'name', function () {
-    //     var rowIndex = table.ceil($(this)).index().row
-    //     var rowData = table.row(rowIndex).data()
-    //     var id = rowData.id
-    //
-    //     window.location.href= "showBillDetailBT3"
-    // })
 })

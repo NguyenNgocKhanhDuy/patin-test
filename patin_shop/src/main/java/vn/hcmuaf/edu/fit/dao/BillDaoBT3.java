@@ -49,6 +49,20 @@ public class BillDaoBT3 {
 
     }
 
+    public boolean changeStatus(int id, String status){
+        Integer i = JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("UPDATE bill SET status = :status WHERE id = :id").bind("id", id).bind("status", status).execute();
+        });
+        return i == 1 ? true : false;
+    }
+
+    public String getStatus(int id){
+        List<String> strings = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT status FROM bill WHERE id = ?").bind(0, id).mapTo(String.class).stream().collect(Collectors.toList());
+        });
+        return strings.size() == 1 ? strings.get(0) : null;
+    }
+
     public static void main(String[] args) {
         System.out.println(BillDaoBT3.getInstance().getBillAllDetail(25));
     }

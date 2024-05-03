@@ -24,4 +24,25 @@
             {data: "price"}
         ]
     })
+
+    $('#statusBill').change(function () {
+        var status = $(this).val()
+        if (status == "Trạng thái hoàn thành"){
+            $(this).prop('disabled', true)
+        }
+        $.ajax({
+            url: 'changeStatusBillBT3',
+            type: 'POST',
+            data: {
+                id: $('#billID').val(),
+                status: status
+            },
+            success: function (response) {
+                alert(response)
+            },
+            error: function (xhr, status, error) {
+                alert(error)
+            }
+        })
+    })
 })
