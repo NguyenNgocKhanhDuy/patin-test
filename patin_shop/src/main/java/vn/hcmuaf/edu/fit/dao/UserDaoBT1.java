@@ -64,10 +64,12 @@ public class UserDaoBT1 extends AbsDao<User>{
         return strings.size() == 0 ? false : true;
     }
 
-    public boolean delete(int id){
+    public boolean deleteUser(AbsModel model, String ip, String level, String address){
+        User user = (User) model;
         Integer i = JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("DELETE FROM user WHERE id = ?").bind(0, id).execute();
+            return handle.createUpdate("DELETE FROM user WHERE id = ?").bind(0, user.getId()).execute();
         });
+        delete(user, ip , level, address);
         return i == 1 ? true : false;
     }
 
