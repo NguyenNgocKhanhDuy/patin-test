@@ -17,9 +17,9 @@ $('document').ready(function () {
         columns: [
             // {data: 'ID'},
 
-            {data: 'email'},
-            // {data: 'password'},
             {data: 'fullName'},
+            // {data: 'password'},
+            {data: 'email'},
             {data: 'phone'},
             {data: 'address'},
             {

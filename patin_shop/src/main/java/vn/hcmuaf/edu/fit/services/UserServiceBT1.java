@@ -19,8 +19,8 @@ public class UserServiceBT1 {
         return instance;
     }
 
-    public boolean addUser(User user) {
-        return UserDaoBT1.getInstance().addUser(user);
+    public boolean addUser(User user, String ip, String level, String address) {
+        return UserDaoBT1.getInstance().addUser(user, ip, level, address);
     }
 
     public boolean isExistsUser(String email){

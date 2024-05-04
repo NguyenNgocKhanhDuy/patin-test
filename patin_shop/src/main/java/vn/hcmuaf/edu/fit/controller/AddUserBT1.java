@@ -66,10 +66,16 @@ public class AddUserBT1 extends HttpServlet {
             user.setVerify(verify);
             user.setRole(role);
 
+            String ip = request.getHeader("X-FORWARDED-FOR");
+            if (ip == null){
+                ip = request.getRemoteAddr();
+            }
+
             String error = UserServiceBT1.getInstance().validate(user);
             if (error.equals("")){
                 if (!UserServiceBT1.getInstance().isExistsUser(user.getEmail())){
-                    if (UserServiceBT1.getInstance().addUser(user)){
+                    user.setAfterData(email);
+                    if (UserServiceBT1.getInstance().addUser(user, ip, "info", "admin add user")){
                         request.setAttribute("type", "success");
                         request.setAttribute("information", "Thêm thành công");
                         request.getRequestDispatcher("bt1.jsp").forward(request, response);

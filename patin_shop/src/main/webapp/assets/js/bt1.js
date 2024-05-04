@@ -3,6 +3,7 @@ pass = document.querySelector("input[type = password]")
 text = document.querySelectorAll("input[type = text]")
 phone = document.querySelector("input[type = phone]")
 error = document.querySelector(".return")
+
 var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 var phoneRegex = /^\d{1,10}$/;
