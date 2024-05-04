@@ -1,5 +1,6 @@
 package vn.hcmuaf.edu.fit.dao;
 
+import vn.hcmuaf.edu.fit.AbsModel;
 import vn.hcmuaf.edu.fit.bean.Bill;
 import vn.hcmuaf.edu.fit.bean.BillDetail;
 import vn.hcmuaf.edu.fit.db.JDBIConnector;
@@ -8,7 +9,7 @@ import java.sql.SQLOutput;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BillDaoBT3 {
+public class BillDaoBT3 extends AbsDao<Bill>{
     private static BillDaoBT3 instance;
 
     public BillDaoBT3() {
@@ -25,6 +26,26 @@ public class BillDaoBT3 {
                     .mapToBean(Bill.class).stream().collect(Collectors.toList());
         });
         return bills;
+    }
+
+    @Override
+    public void select() {
+        super.select();
+    }
+
+    @Override
+    public boolean insert(AbsModel model, String ip, String level, String address) {
+        return super.insert(model, ip, level, address);
+    }
+
+    @Override
+    public boolean update(AbsModel model, String ip, String level, String address) {
+        return super.update(model, ip, level, address);
+    }
+
+    @Override
+    public boolean delete(AbsModel model, String ip, String level, String address) {
+        return super.delete(model, ip, level, address);
     }
 
     public Bill getBill(int id){
@@ -49,10 +70,12 @@ public class BillDaoBT3 {
 
     }
 
-    public boolean changeStatus(int id, String status){
+    public boolean changeStatus(int id, String status, AbsModel model, String ip, String level, String address){
         Integer i = JDBIConnector.get().withHandle(handle -> {
             return handle.createUpdate("UPDATE bill SET status = :status WHERE id = :id").bind("id", id).bind("status", status).execute();
         });
+        Bill b = (Bill) model;
+        update(b, ip, level, address);
         return i == 1 ? true : false;
     }
 

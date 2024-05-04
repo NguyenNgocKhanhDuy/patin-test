@@ -17,7 +17,6 @@ import java.util.List;
 @WebServlet(name = "ShowBillBT3", value = "/showBillBT3")
 public class ShowBillBT3 extends HttpServlet {
     private Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Bill> bills = BillDaoBT3.getInstance().getAllBill();

@@ -3,6 +3,7 @@ package vn.hcmuaf.edu.fit;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;
+import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -18,3 +19,5 @@ public class LocalDateTimeAdapter implements JsonSerializer<LocalDateTime>, Json
         return new JsonPrimitive(formatter.format(localDateTime));
     }
 }
+
+

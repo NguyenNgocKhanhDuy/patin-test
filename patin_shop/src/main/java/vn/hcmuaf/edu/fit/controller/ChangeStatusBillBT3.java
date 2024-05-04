@@ -1,5 +1,6 @@
 package vn.hcmuaf.edu.fit.controller;
 
+import vn.hcmuaf.edu.fit.bean.Bill;
 import vn.hcmuaf.edu.fit.dao.BillDao;
 import vn.hcmuaf.edu.fit.dao.BillDaoBT3;
 
@@ -21,11 +22,19 @@ public class ChangeStatusBillBT3 extends HttpServlet {
         int id;
         String status = request.getParameter("status");
 
+        String ip = request.getHeader("X-FORWARDED-FOR");
+        if (ip == null){
+            ip = request.getRemoteAddr();
+        }
+
             try {
                 id = Integer.parseInt(request.getParameter("id"));
                 String oldStatus = BillDaoBT3.getInstance().getStatus(id);
                 if (!oldStatus.equals("Trạng thái hoàn thành")){
-                    if (BillDaoBT3.getInstance().changeStatus(id, status)){
+                    Bill bill = new Bill();
+                    bill.setBeforeData(id+" - status: "+oldStatus);
+                    bill.setAfterData(id+" - status: "+status);
+                    if (BillDaoBT3.getInstance().changeStatus(id, status, bill, ip, "alert", "bill")){
                         response.getWriter().println("Thay đổi thành công");
                     }else {
                         response.getWriter().println("Thay đổi thất bại");
