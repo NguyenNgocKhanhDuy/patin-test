@@ -3,7 +3,7 @@
 
  Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 100428 (10.4.28-MariaDB)
+ Source Server Version : 100428 (10.4.28-MariaDB)hhh
  Source Host           : localhost:3306
  Source Schema         : te
 

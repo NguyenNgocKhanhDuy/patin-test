@@ -1,4 +1,4 @@
-﻿$('document').ready(function () {
+$('document').ready(function () {
     var table = $('#data').DataTable({
         ajax: {
             url: "showBillBT3",
@@ -19,10 +19,10 @@
                 className: "text-center",
                 // render: function () {
                 //     return `<select>
-                //                 <option ${data.status == "..." ? "selected" : ""} value="1">Trạng thái 1</option>
-                //                 <option value="2">Trạng thái 2</option>
-                //                 <option value="3">Trạng thái 3</option>
-                //                 <option value="4">Trạng thái 4</option>
+                //                 <option ${data.status == "..." ? "selected" : ""} value="1">Tr?ng th?i 1</option>
+                //                 <option value="2">Tr?ng th?i 2</option>
+                //                 <option value="3">Tr?ng th?i 3</option>
+                //                 <option value="4">Tr?ng th?i 4</option>
                 //             </select>`
                 // }
 
